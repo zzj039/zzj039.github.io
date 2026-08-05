@@ -4,6 +4,13 @@ export default defineConfig({
   title: '我的个人小站',
   description: '记录日常、学习与感想',
   themeConfig: {
+    lastUpdated: {
+      text: '最近更新',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
     nav: [
       { text: '首页', link: '/' },
       { text: '生活', link: '/life/' },
