@@ -1,0 +1,67 @@
+/* ============================================================
+   首页 Hero 自定义布局
+   logo 图片独占页面顶部一块区域（宽幅 banner），
+   原来的标题、说明文字和按钮整体下移并居中显示。
+   ============================================================ */
+
+/* 整个 hero 改为纵向排列（对所有屏幕宽度生效） */
+.VPHero.has-image .container {
+  flex-direction: column !important;
+  text-align: center !important;
+  align-items: center !important;
+}
+
+/* logo 区：独占顶部一行 */
+.VPHero.has-image .image {
+  order: 1 !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  flex-grow: 0 !important;
+  margin: 0 0 32px !important;
+}
+
+.VPHero.has-image .image-container {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 720px;
+  margin: 0 auto !important;
+  transform: none !important;
+  line-height: 0;
+}
+
+/* 隐藏默认的圆形装饰背景 */
+.VPHero.has-image .image-bg {
+  display: none !important;
+}
+
+/* logo 图片按原始比例铺满，圆角 + 阴影展示 */
+.VPHero.has-image .image-src {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  transform: none !important;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+/* 文字区：位于 logo 下方，整体居中 */
+.VPHero.has-image .main {
+  order: 2 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.VPHero.has-image .name,
+.VPHero.has-image .text,
+.VPHero.has-image .tagline {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.VPHero.has-image .actions {
+  justify-content: center !important;
+}

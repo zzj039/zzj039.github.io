@@ -4,9 +4,9 @@ layout: home
 hero:
   name: "zjz 的小站"
   text: "记录生活 · 学习 · 感想"
-  tagline: 一个安静记录日常、积累学习笔记的个人网站。
+  tagline: 一个记录日常、积累学习笔记的个人网站。
   image:
-    src: /logo.jpg
+    src: /images/logo.png
     alt: 站点图标
   actions:
     - theme: brand
@@ -19,7 +19,7 @@ hero:
 features:
   - icon: 🌱
     title: 日常生活
-    details: 记录每天的小事、见闻和心情，把平凡的日子留下痕迹。
+    details: 记录小事、见闻和心情，把平凡的日子留下痕迹。
     link: /life/
     linkText: 去看看
   - icon: 📚
@@ -34,11 +34,11 @@ features:
     linkText: 去看看
 ---
 
-## 欢迎来到我的小站 🎉
+## 欢迎来到我的小站
 
 这里是我的个人空间，主要记录：
 
-- 每天的**日常**与心情
+- 一些有意思的**日常**与心情
 - 学习过程中的**笔记**与总结
 - 偶尔的**胡思乱想**
 
