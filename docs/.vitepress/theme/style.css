@@ -1,17 +1,17 @@
 /* ============================================================
    首页 Hero 自定义布局
-   logo 图片独占页面顶部一块区域（宽幅 banner），
-   原来的标题、说明文字和按钮整体下移并居中显示。
+   logo 作为宽幅 banner 位于顶部，宽度随页面自适应；
+   标题文字、标语与按钮整体居左，字号随页面大小自适应。
    ============================================================ */
 
-/* 整个 hero 改为纵向排列（对所有屏幕宽度生效） */
+/* 整个 hero 改为纵向排列，内容居左 */
 .VPHero.has-image .container {
   flex-direction: column !important;
-  text-align: center !important;
-  align-items: center !important;
+  text-align: left !important;
+  align-items: stretch !important;
 }
 
-/* logo 区：独占顶部一行 */
+/* logo 区：独占顶部一行，宽度随页面自适应 */
 .VPHero.has-image .image {
   order: 1 !important;
   width: 100% !important;
@@ -24,8 +24,8 @@
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  max-width: 720px;
-  margin: 0 auto !important;
+  max-width: none !important;
+  margin: 0 !important;
   transform: none !important;
   line-height: 0;
 }
@@ -35,7 +35,7 @@
   display: none !important;
 }
 
-/* logo 图片按原始比例铺满，圆角 + 阴影展示 */
+/* logo 图片按原始比例铺满容器宽度，随网页大小缩放 */
 .VPHero.has-image .image-src {
   position: static !important;
   display: block !important;
@@ -48,20 +48,262 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
 }
 
-/* 文字区：位于 logo 下方，整体居中 */
+/* 文字区：位于 logo 下方，居左 */
 .VPHero.has-image .main {
   order: 2 !important;
   width: 100% !important;
   max-width: 100% !important;
 }
 
-.VPHero.has-image .name,
 .VPHero.has-image .text,
 .VPHero.has-image .tagline {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
+/* 标题文字与标语字号随页面大小自适应 */
+.VPHero.has-image .text {
+  width: auto !important;
+  max-width: 100% !important;
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem) !important;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.VPHero.has-image .tagline {
+  max-width: 48em !important;
+  font-size: clamp(1rem, 1.8vw, 1.5rem) !important;
+  line-height: 1.6;
+}
+
+/* 按钮区：居左 */
 .VPHero.has-image .actions {
-  justify-content: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* ============================================================
+   表格（影视清单等）：自适应页面宽度
+   外层 .table-wrapper 负责窄屏横向滚动；
+   表格本身以 display:table + width:100% 真正铺满内容区宽度，
+   不再缩在左侧。
+   ============================================================ */
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.vp-doc th,
+.vp-doc td {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.vp-doc tr:hover {
+  background-color: rgba(127, 127, 127, 0.12);
+}
+
+/* ============================================================
+   侧边栏收起：隐藏左侧栏，中间内容区自动变宽
+   通过 <html> 上的 .no-sidebar 类控制（桌面端生效）
+   ============================================================ */
+@media (min-width: 960px) {
+  html.no-sidebar .VPSidebar {
+    display: none;
+  }
+
+  html.no-sidebar .VPContent.has-sidebar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* 隐藏侧边栏后，正文/表格不再受 688px 限制，铺满可用宽度 */
+  html.no-sidebar .VPDoc.has-aside .content-container {
+    max-width: none;
+  }
+}
+
+/* ============================================================
+   右侧目录折叠：隐藏右侧 outline，正文自动变宽
+   通过 <html> 上的 .no-aside 类控制
+   ============================================================ */
+html.no-aside .VPDoc .aside {
+  display: none;
+}
+
+html.no-aside .VPDoc.has-aside .content-container {
+  max-width: none;
+}
+
+/* ============================================================
+   首页联系区（GitHub / 邮箱按钮）
+   按钮样式复刻 VitePress hero 的 alt 按钮
+   ============================================================ */
+.contact-section {
+  margin-top: 48px;
+  text-align: left;
+}
+
+.contact-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--vp-button-alt-border);
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-button-alt-text);
+  background-color: var(--vp-button-alt-bg);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+}
+
+.contact-btn:hover {
+  border-color: var(--vp-button-alt-hover-border);
+  color: var(--vp-button-alt-hover-text);
+  background-color: var(--vp-button-alt-hover-bg);
+}
+
+/* 邮箱为纯文本（无链接），不显示可点击的悬停效果 */
+.contact-btn:not([href]) {
+  cursor: default;
+}
+
+.contact-btn:not([href]):hover {
+  border-color: var(--vp-button-alt-border);
+  color: var(--vp-button-alt-text);
+  background-color: var(--vp-button-alt-bg);
+}
+
+/* ============================================================
+   意境页：图片 + 诗句
+   生活/碎笔：诗句叠加在图片下方渐变之上，营造氛围感
+   学习：图片轮播 + 下方诗句
+   ============================================================ */
+
+/* 通用淡入上浮动效（图片/轮播进入时） */
+@keyframes schoolFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 图片 + 诗句叠加 */
+.scene-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  animation: schoolFadeIn 1.2s ease-out both;
+}
+
+.scene-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scene-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 56px 24px 28px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0));
+  text-align: center;
+}
+
+.scene-poem {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+  font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+  font-style: italic;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.scene-author {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.78em;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* 学习页：图片下方的诗句 */
+.scene-poem-below {
+  margin: 32px auto 0;
+  max-width: 720px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+  color: var(--vp-c-text-1);
+}
+
+.scene-poem-below .scene-author {
+  color: var(--vp-c-text-2);
+  opacity: 1;
+}
+
+/* 学习页：官网链接 */
+.school-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.school-links-row a {
+  padding: 8px 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 20px;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.school-links-row a:hover {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
 }

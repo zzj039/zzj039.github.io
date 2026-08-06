@@ -2,19 +2,11 @@
 layout: home
 
 hero:
-  name: "zjz 的小站"
-  text: "记录生活 · 学习 · 感想"
+  text: "记录生活 · 学习 · 碎笔"
   tagline: 一个记录日常、积累学习笔记的个人网站。
   image:
     src: /images/logo.png
     alt: 站点图标
-  actions:
-    - theme: brand
-      text: 📖 开始阅读
-      link: /life/
-    - theme: alt
-      text: 🐙 我的 GitHub
-      link: https://github.com/zzj039
 
 features:
   - icon: 🌱
@@ -28,7 +20,7 @@ features:
     link: /study/
     linkText: 去看看
   - icon: 💭
-    title: 感想随想
+    title: 碎笔
     details: 对一些事情的想法和思考，写给未来的自己。
     link: /thoughts/
     linkText: 去看看
@@ -43,3 +35,12 @@ features:
 - 偶尔的**胡思乱想**
 
 内容不定期更新，感谢你的来访。
+
+<div class="contact-section">
+  <h2>📮 联系我</h2>
+  <div class="contact-buttons">
+    <a class="contact-btn" href="https://github.com/zzj039" target="_blank" rel="noopener noreferrer">🐙 我的 GitHub</a>
+    <span class="contact-btn">📧 zhaojizhang39@gmail.com</span>
+    <span class="contact-btn">📧 zhaojizhang39@163.com</span>
+  </div>
+</div>
