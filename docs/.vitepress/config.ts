@@ -24,6 +24,7 @@ export default defineConfig({
     },
   },
   themeConfig: {
+    logo: '/images/章鱼哥.jpg',
     lastUpdated: {
       text: '最近更新',
       formatOptions: {
@@ -48,6 +49,11 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '项目经历', link: '/life/undergraduate-project' },
+                { text: '向前辈学习', link: 'https://ilovesmu.github.io/' },
+                {
+                  text: '无意中找到的医学影像处理教程',
+                  link: 'https://datawhalechina.github.io/med-imaging-primer/',
+                },
               ],
             },
             { text: '研究生（南方医科大学）', collapsed: true, items: [] },

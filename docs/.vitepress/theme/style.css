@@ -84,6 +84,16 @@
 }
 
 /* ============================================================
+   导航栏头像（章鱼哥）圆形显示
+   ============================================================ */
+.VPNavBarTitle .logo {
+  width: var(--vp-nav-logo-height);
+  height: var(--vp-nav-logo-height);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ============================================================
    表格（影视清单等）：自适应页面宽度
    外层 .table-wrapper 负责窄屏横向滚动；
    表格本身以 display:table + width:100% 真正铺满内容区宽度，
@@ -248,7 +258,7 @@ html.no-aside .VPDoc.has-aside .content-container {
 .scene-poem {
   margin: 0;
   font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
-  font-size: clamp(1.1rem, 2.6vw, 1.65rem);
+  font-size: clamp(1rem, 2.3vw, 1.45rem);
   font-style: italic;
   line-height: 1.9;
   letter-spacing: 0.06em;
@@ -271,7 +281,7 @@ html.no-aside .VPDoc.has-aside .content-container {
   max-width: 720px;
   text-align: center;
   font-family: Georgia, 'Times New Roman', 'Songti SC', 'SimSun', serif;
-  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
   font-style: italic;
   line-height: 1.9;
   letter-spacing: 0.05em;

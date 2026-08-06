@@ -3,10 +3,10 @@ title: 学习记录
 ---
 
 <script setup>
-import ImageCarousel from '../.vitepress/theme/components/ImageCarousel.vue'
+import ImageGallery from '../.vitepress/theme/components/ImageGallery.vue'
 </script>
 
-<ImageCarousel />
+<ImageGallery />
 
 <p class="scene-poem-below">
   少年心事当拏云，谁念幽寒坐呜呃。
